@@ -8,7 +8,8 @@ namespace WatchTextFileReplacer
         public string WatchFileType { get; set; }
         public string OldString { get; set; }
         public string NewString { get; set; }
-        public bool IgnoreCase { get; set; }
+        public bool IgnoreCase { get; set; } = true;
+        public bool Recursive { get; set; } = true;
     }
     class AppConfig
     {
@@ -31,7 +32,7 @@ namespace WatchTextFileReplacer
                     WatchFileType = task["WatchFileType"].Value<string>(),
                     OldString = task["OldString"].Value<string>(),
                     NewString = task["NewString"].Value<string>(),
-                    IgnoreCase = task["IgnoreCase"].Value<bool>(),
+                    Recursive = task["Recursive"].Value<bool>(),
                 };
                 config.Tasks.Add(taskObj);
             }

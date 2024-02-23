@@ -5,7 +5,8 @@
       "WatchFileType": "*.txt",
       "OldString": "",
       "NewString": "",
-      "IgnoreCase": true
+      "IgnoreCase": true,
+      "Recursive": true
     }
   ]
 }

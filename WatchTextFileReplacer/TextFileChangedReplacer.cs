@@ -53,12 +53,12 @@
         {
             var report = new RecursiveReplaceReport();
             report.StartTime = DateTime.Now;
-            RecursiveReplace(task.WatcherPath, task.WatchFileType, task.OldString, task.NewString, task.IgnoreCase, report);
+            RecursiveReplace(task.WatcherPath, task.WatchFileType, task.OldString, task.NewString, task.IgnoreCase, task.Recursive, report);
             report.EndTime = DateTime.Now;
             return report;
         }
 
-        private static void RecursiveReplace(string watcherPath, string watchFileType, string oldString, string newString, bool ignoreCase, RecursiveReplaceReport report)
+        private static void RecursiveReplace(string watcherPath, string watchFileType, string oldString, string newString, bool ignoreCase, bool recursive, RecursiveReplaceReport report)
         {
             if (Directory.Exists(watcherPath))
             {
@@ -68,10 +68,14 @@
                     report.MatchFiles++;
                     if (Replace(file, oldString, newString, ignoreCase)) report.Replaced++;
                 }
-                var dirs = Directory.GetDirectories(watcherPath);
-                foreach (var dir in dirs)
+
+                if (recursive)
                 {
-                    RecursiveReplace(dir, watchFileType, oldString, newString, ignoreCase, report);
+                    var dirs = Directory.GetDirectories(watcherPath);
+                    foreach (var dir in dirs)
+                    {
+                        RecursiveReplace(dir, watchFileType, oldString, newString, ignoreCase, true, report);
+                    }
                 }
             }
         }
