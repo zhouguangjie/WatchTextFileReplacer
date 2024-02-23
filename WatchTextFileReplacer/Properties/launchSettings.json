@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "RunReplaceOnce": {
+      "commandName": "Project",
+      "commandLineArgs": "-run"
+    },
+    "Daemon": {
+      "commandName": "Project"
+    }
+  }
+}

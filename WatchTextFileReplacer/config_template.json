@@ -1,0 +1,11 @@
+﻿{
+  "Tasks": [
+    {
+      "WatchPath": "",
+      "WatchFileType": "*.txt",
+      "OldString": "",
+      "NewString": "",
+      "IgnoreCase": true
+    }
+  ]
+}
